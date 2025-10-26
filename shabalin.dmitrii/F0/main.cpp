@@ -48,11 +48,11 @@ int main(int argc, char* argv[])
     }
     catch (const std::out_of_range &)
     {
-      std::cout << "<INVALID COMMAND>\n";
+      std::cout << "<WRONG COMMAND>\n";
     }
     catch (const std::exception &)
     {
-      std::cout << "<INVALID COMMAND>\n";
+      std::cout << "<WRONG COMMAND>\n";
     }
     std::cin.clear();
     std::cin.ignore(std::numeric_limits< std::streamsize >::max(), '\n');
