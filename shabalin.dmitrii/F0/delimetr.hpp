@@ -8,7 +8,7 @@ namespace shabalin
   {
     char exp;
   };
-  std::istream & operator>>(std::istream & in, DelimiterI && dest);
+  std::istream & operator>>(std::istream & in, Delimiter && dest);
 }
 #endif
 

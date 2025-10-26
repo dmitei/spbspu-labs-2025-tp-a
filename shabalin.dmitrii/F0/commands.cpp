@@ -140,7 +140,7 @@ void shabalin::createDict(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> name;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   if (dicts.find(name) != dicts.end())
@@ -158,7 +158,7 @@ void shabalin::addWord(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> dictName >> word >> translation;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto dictIt = dicts.find(dictName);
@@ -190,7 +190,7 @@ void shabalin::translateWord(Dicts & dicts, std::istream & in, std::ostream & ou
   in >> dictName >> word;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto dictIt = dicts.find(dictName);
@@ -216,7 +216,7 @@ void shabalin::removeWord(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> dictName >> word;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto dictIt = dicts.find(dictName);
@@ -242,7 +242,7 @@ void shabalin::printDict(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> dictName;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto dictIt = dicts.find(dictName);
@@ -268,12 +268,12 @@ void shabalin::saveToFile(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> dictName >> fileName;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   if (fileName.size() < 4 || fileName.substr(fileName.size() - 4) != ".txt")
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto dictIt = dicts.find(dictName);
@@ -285,7 +285,7 @@ void shabalin::saveToFile(Dicts & dicts, std::istream & in, std::ostream & out)
   std::ofstream file(fileName);
   if (!file)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   file << dictName << "\n";
@@ -300,7 +300,7 @@ void shabalin::combineDicts(Dicts & dicts, std::istream & in, std::ostream & out
   in >> newName >> dict1Name >> dict2Name;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   if (dicts.find(newName) != dicts.end())
@@ -312,7 +312,7 @@ void shabalin::combineDicts(Dicts & dicts, std::istream & in, std::ostream & out
   auto it2 = dicts.find(dict2Name);
   if (it1 == dicts.end() || it2 == dicts.end())
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   const Dict & first = it1->second;
@@ -330,7 +330,7 @@ void shabalin::deleteWord(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> dictName;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto it = dicts.find(dictName);
@@ -348,7 +348,7 @@ void shabalin::editTranslation(Dicts & dicts, std::istream & in, std::ostream & 
   in >> dictName >> word >> newTranslation;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto dictIt = dicts.find(dictName);
@@ -374,7 +374,7 @@ void shabalin::renameDict(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> oldName >> newName;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto oldIt = dicts.find(oldName);
@@ -398,14 +398,14 @@ void shabalin::moveCommand(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> fromDict >> toDict >> word;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto fromIt = dicts.find(fromDict);
   auto toIt = dicts.find(toDict);
   if (fromIt == dicts.end() || toIt == dicts.end())
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   Dict & from = fromIt->second;
@@ -432,14 +432,14 @@ void shabalin::copyCommand(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> fromDict >> toDict >> word;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   auto fromIt = dicts.find(fromDict);
   auto toIt = dicts.find(toDict);
   if (fromIt == dicts.end() || toIt == dicts.end())
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   const Dict & from = fromIt->second;
@@ -465,7 +465,7 @@ void shabalin::common(Dicts & dicts, std::istream & in, std::ostream & out)
   in >> newName >> dict1Name >> dict2Name;
   if (!in)
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   if (dicts.find(newName) != dicts.end())
@@ -477,7 +477,7 @@ void shabalin::common(Dicts & dicts, std::istream & in, std::ostream & out)
   auto it2 = dicts.find(dict2Name);
   if (it1 == dicts.end() || it2 == dicts.end())
   {
-    out << "<INVALID COMMAND>\n";
+    out << "<WRONG COMMAND>\n";
     return;
   }
   const Dict & dict1 = it1->second;
@@ -543,22 +543,20 @@ void shabalin::listDicts(Dicts & dicts, std::istream &, std::ostream & out)
 
 void shabalin::printHelp(std::ostream & out)
 {
-  out << "Available commands:\n";
+  out << "Commands list:\n";
   out << "1) create <dict> - Create a new dictionary\n";
-  out << "2) add <dict> <key> <translation> - Add word to dictionary\n";
-  out << "3) translate <dict> <key> - Translate a word\n";
-  out << "4) remove <dict> <key> - Remove a word\n";
-  out << "5) print <dict> - Print dictionary contents\n";
+  out << "2) add <dict> <key> <translation> - Add a word/translation to dictionary\n";
+  out << "3) translate <dict> <key> - Output all translations for a word\n";
+  out << "4) remove <dict> <key> - Delete a word from the dictionary\n";
+  out << "5) print <dict> - Show all words and translations from a dictionary\n";
   out << "6) save <dict> <filename> - Save dictionary to file\n";
-  out << "7) merge <resdict> <dict1> <dict2> - Merge two dictionaries\n";
+  out << "7) combine <newdict> <dict1> <dict2> - Merge two dictionaries into a new one\n";
   out << "8) delete <dict> - Delete a dictionary\n";
-  out << "9) edit <dict> <key> <newtranslation> - Edit word translation\n";
-  out << "10) rename <dict> <newname> - Rename dictionary\n";
-  out << "11) move <dict1> <dict2> <key> - Move word between dictionaries\n";
-  out << "12) copy <dict1> <dict2> <key> - Copy word between dictionaries\n";
-  out << "13) intersect <resdict> <dict1> <dict2> - Intersect two dictionaries\n";
-  out << "14) difference <resdict> <dict1> <dict2> - Difference of dictionaries\n";
-  out << "15) unique <resdict> <dict1> <dict2> - Unique words from dictionaries\n";
-  out << "16) prefix <newdict> <dict> <prefix> - Words with given prefix\n";
+  out << "9) edit <dict> <key> <translation> - Edit translations for a word\n";
+  out << "10) rename <dict> <newname> - Rename a dictionary\n";
+  out << "11) move <from> <to> <key> - Move word (with translations) to another dictionary\n";
+  out << "12) copy <from> <to> <key> - Copy word (with translations) to another dictionary\n";
+  out << "13) common <newdict> <dict1> <dict2> - Add common words of both to a new dictionary\n";
+  out << "14) list - show list of available dictionaries\n";
+  out << "\n";
 }
-

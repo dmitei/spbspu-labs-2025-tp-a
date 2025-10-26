@@ -1,4 +1,4 @@
-#include "StreamGuard.hpp"
+#include "streamGuard.hpp"
 
 shabalin::StreamGuard::StreamGuard(std::basic_ios< char > & stream):
   stream_(stream),
